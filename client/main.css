@@ -1,0 +1,9 @@
+html,
+body {
+  height: 90%;
+}
+
+body {
+  align-items: center;
+  background-color: #b8b4b4;
+}

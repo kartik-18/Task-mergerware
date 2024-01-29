@@ -1,0 +1,34 @@
+<template name="dashboard">
+    <div class="container mt-4">
+
+        <form id="roleForm">
+            <h1 class="h3 tec mb-3 text-center ">Choose Your Role <br><span class="text-muted text-capitalize">(Your current role is: {{#if currentUser.profile.role}}{{currentUser.profile.role}}{{/if}})</span></h1>
+            <div class="form-floating">
+                <select id="role" class="form-control">
+                    <option value="" selected disabled>Please select role</option>
+                    <option value="admin">Admin</option>
+                    <option value="borrower">Borrower</option>
+                    <option value="lender">Lender</option>
+                </select>
+                <label for="role" >Select Your Role</label>
+            </div>
+            <button class="w-100 mt-4 mb-4 btn btn-lg btn-primary" type="submit">Save</button>
+        </form>
+
+        {{#if isAdmin}}
+            <h3><a href="{{pathFor 'payments'}}">All loans payments are here. </a></h3>
+        {{/if}}
+        
+        {{#if isBorrower}}
+            <h3> <a href="{{pathFor 'requestLoan'}}">New loan?</a></h3>
+            <h3> <a href="{{pathFor 'loans'}}">Your existing past loans.</a></h3>
+        {{/if}}
+        
+        {{#if isLender}}
+            <h3> <a href="{{pathFor 'loans'}}">Pay for the loan here.</a></h3>
+            <h3><a href="{{pathFor 'payments'}}">Your past payments are here. </a></h3>
+        {{/if}}
+
+
+      </div>
+</template>
